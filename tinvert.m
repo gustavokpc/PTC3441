@@ -1,0 +1,13 @@
+function [ arelb ] = tinvert( brela )
+
+R_brela = brela(1:3, 1:3);
+O_brela = brela(1:3, 4);
+zeros = [0 0 0];
+
+arelb(1:3, 1:3) = transpose(R_brela);
+arelb(1:3,4) = tmult(-transpose(R_brela), O_brela);
+arelb(4,1:3) = zeros;
+arelb(4,4) = 1;
+
+end
+
