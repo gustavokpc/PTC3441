@@ -1,31 +1,35 @@
-%% UTOI   
-% Converte o formato de entrada de dados do usuário
-% $(x,y,\theta)$
-% para o formato interno (matriz de transformação homogênea)
-% para um manipulador RRR planar.
+%% TMULT   
+% Realiza a multiplicação de duas matrizes de transformação
 % 
 %% Calling Syntax
-% iform = utoi(uform)
-%
+% crela = tmult(brela,crelb)
+%   
 %% I/O Variables
-% |IN Double Array| *uform*: _User form_  [x y theta] [meters meters degrees]
+% |IN Double Matrix| *brela*, *crelb*: Transformation Matrix 4x4
 % 
-% |OU Double Matrix| *iform*: _Internal form_  Homogeneous Transformation Matrix 4x4
+% |OU Double Matrix| *crela*: Transformation Matrix 4x4
 %
 %% Example
-%  uform = [1 0 90]
-%  iform = utoi(uform)
+%  brela = [1 0 0 0.3;
+%           0 1 0 0.5;
+%           0 0 1 0  ;
+%           0 0 0 1 ];
+
+%  crelb = [1 0 0 0.3;
+%           0 1 0 0.5;
+%           0 0 1 0  ;
+%           0 0 0 1 ]
+
+%  crela = tmult(brela,crelb);
 %
 %% Hypothesis
 % RRR planar robot.
 %
 %% Limitations
-% A "Forma do usuário" é específica para o exercício de simulação e não tem
-% validade para qualquer configuração de robô.
 %
 %% Version Control
 %
-% 1.0; Grupo Gabriel, Gustavo, José; 2025/04/03 ; First issue.
+% 1.0; Grupo 3; 2025/04/10 ; First issue.
 %     
 %% Function
 function [ crela ] = tmult( brela,crelb )
@@ -34,10 +38,10 @@ function [ crela ] = tmult( brela,crelb )
 
 
 %% Main Calculations
-mul = brela*crelb;
+mult = brela*crelb;
 
 %% Output Data
+crela = mult;
 
-crela = mul;
 end
 

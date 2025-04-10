@@ -1,0 +1,49 @@
+%% TMULT   
+% Realiza a multiplicação de duas matrizes de transformação
+% 
+%% Calling Syntax
+% crela = tmult(brela,crelb)
+%   
+%% I/O Variables
+% |IN Double Matrix| *brela*, *crelb*: Transformation Matrix 4x4
+% 
+% |OU Double Matrix| *crela*: Transformation Matrix 4x4
+%
+%% Example
+%  brela = [1 0 0 0.3;
+%           0 1 0 0.5;
+%           0 0 1 0  ;
+%           0 0 0 1 ];
+
+%  crelb = [1 0 0 0.3;
+%           0 1 0 0.5;
+%           0 0 1 0  ;
+%           0 0 0 1 ]
+
+%  crela = tmult(brela,crelb);
+%
+%% Hypothesis
+% RRR planar robot.
+%
+%% Limitations
+% A "Forma do usuário" é específica para o exercício de simulação e não tem
+% validade para qualquer configuração de robô.
+%
+%% Version Control
+%
+% 1.0; Grupo 3; 2025/04/10 ; First issue.
+%     
+%% Function
+function [ crela ] = tmult( brela,crelb )
+
+%% Validity
+
+
+%% Main Calculations
+mult = brela*crelb;
+
+%% Output Data
+crela = mult;
+
+end
+
