@@ -44,4 +44,3 @@ mult = brela*crelb;
 crela = mult;
 
 end
-
