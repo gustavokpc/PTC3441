@@ -1,0 +1,223 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>INVKIN</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2025-04-21"><meta name="DC.source" content="invkin.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>INVKIN</h1><!--introduction--><p>Calcula a cinem&aacute;tica inversa para um manipulador RRR planar.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Calling Syntax</a></li><li><a href="#2">I/O Variables</a></li><li><a href="#3">Example</a></li><li><a href="#4">Hypothesis</a></li><li><a href="#5">Limitations</a></li><li><a href="#6">Version Control</a></li><li><a href="#7">Function</a></li><li><a href="#9">Validity</a></li><li><a href="#10">Main Calculations</a></li></ul></div><h2 id="1">Calling Syntax</h2><p>[near, far, sol] = invkin(wrelb, current, L, thetalim)</p><h2 id="2">I/O Variables</h2><p><tt>IN Double Array</tt> <b>theta</b>, <b>L</b>: Array de valores de theta (em graus; [1x3]) e de L (em metros, [1x2]) <tt>IN Double Array</tt> <b>wrelb</b>, <b>current</b>: User form  [x y theta] [metros metros graus] <tt>IN Double Matrix</tt> <b>thetalim</b>: Matrix de valores limites de thetas 2xn (n = n&uacute;mero de juntas) <tt>OU Double Array</tt> <b>near</b>, <b>far</b>: : User form  [x y theta] [metros metros graus] <tt>OUT Flag</tt> <b>sol</b>: 1 if there are valid solutions, 0 otherwise</p><h2 id="3">Example</h2><p>wrelb = utoi([0.5 0.3 45]); current = [0.3 0.5 0]; L = [0.5 0.3]; thetalim = [-170 -170 -170; 170 170 170];</p><p>[near, far, sol] = invkin(wrelb, current, L, thetalim)</p><h2 id="4">Hypothesis</h2><p>RRR planar robot.</p><h2 id="5">Limitations</h2><h2 id="6">Version Control</h2><p>1.0; Grupo 3; 2025/04/19 ; First issue.</p><h2 id="7">Function</h2><pre class="codeinput"><span class="keyword">function</span> [near, far, sol] = invkin(wrelb, current, L, thetalim)
+</pre><h2 id="9">Validity</h2><h2 id="10">Main Calculations</h2><pre class="codeinput">    x = wrelb(1,4);
+    y = wrelb(2,4);
+    R = wrelb(1:2,1:2);
+    phi = atan2(R(2,1), R(1,1));
+
+    c2 = (x^2 + y^2 - L(1)^2 - L(2)^2) / (2 * L(1) *L(2));
+
+    <span class="keyword">if</span> abs(c2) &gt; 1
+        near = [];
+        far =  [] ;
+        sol =  [] ;
+        <span class="keyword">return</span>;
+    <span class="keyword">end</span>
+
+    s2_possibilidades = [+sqrt(1 - c2^2), -sqrt(1 - c2^2)];
+     valid_solutions = [];
+
+    <span class="keyword">for</span> s2 = s2_possibilidades
+        theta2 = atan2(s2, c2);
+        k1 = L(1) + L(2) * c2;
+        k2 = L(2) * s2;
+        gamma = atan2(k2, k1);
+        theta1 = atan2(y, x) - gamma;
+        theta3 = phi - theta1 - theta2;
+
+        theta = [theta1; theta2; theta3];
+
+        dentro_limites = all(theta &gt;= thetalim(1,:)) &amp; all(theta &lt;= thetalim(2,:));
+        <span class="keyword">if</span> dentro_limites
+            valid_solutions = [valid_solutions, theta];
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="keyword">if</span> isempty(valid_solutions)
+        near = [];
+        far = [];
+        sol = 0;
+    <span class="keyword">elseif</span> size(valid_solutions,2) == 1
+        near = valid_solutions(:,1);
+        far = [];
+        sol = 1;
+    <span class="keyword">else</span>
+        d1 = norm(valid_solutions(:,1) - current);
+        d2 = norm(valid_solutions(:,2) - current);
+        <span class="keyword">if</span> d1 &lt;= d2
+            near = valid_solutions(:,1);
+            far = valid_solutions(:,2);
+        <span class="keyword">else</span>
+            near = valid_solutions(:,2);
+            far = valid_solutions(:,1);
+        <span class="keyword">end</span>
+        sol = 1;
+    <span class="keyword">end</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% INVKIN
+% Calcula a cinemática inversa para um manipulador RRR planar.
+% 
+%% Calling Syntax
+% [near, far, sol] = invkin(wrelb, current, L, thetalim)
+%
+%% I/O Variables
+% |IN Double Array| *theta*, *L*: Array de valores de theta (em graus;
+% [1x3]) e de L (em metros, [1x2])
+% |IN Double Array| *wrelb*, *current*: User form  [x y theta] [metros metros graus]
+% |IN Double Matrix| *thetalim*: Matrix de valores limites de thetas 2xn
+% (n = número de juntas)
+% |OU Double Array| *near*, *far*: : User form  [x y theta] [metros metros graus]
+% |OUT Flag| *sol*: 1 if there are valid solutions, 0 otherwise
+% 
+%% Example
+% wrelb = utoi([0.5 0.3 45]);
+% current = [0.3 0.5 0];
+% L = [0.5 0.3];
+% thetalim = [-170 -170 -170; 170 170 170];
+%
+% [near, far, sol] = invkin(wrelb, current, L, thetalim)
+%
+%% Hypothesis
+% RRR planar robot.
+%
+%% Limitations
+%
+%% Version Control
+%
+% 1.0; Grupo 3; 2025/04/19 ; First issue.
+%
+%% Function
+function [near, far, sol] = invkin(wrelb, current, L, thetalim)
+
+%% Validity
+
+
+%% Main Calculations 
+    x = wrelb(1,4);
+    y = wrelb(2,4);
+    R = wrelb(1:2,1:2); 
+    phi = atan2(R(2,1), R(1,1)); 
+
+    c2 = (x^2 + y^2 - L(1)^2 - L(2)^2) / (2 * L(1) *L(2));
+
+    if abs(c2) > 1
+        near = [];
+        far =  [] ;
+        sol =  [] ;
+        return;
+    end
+
+    s2_possibilidades = [+sqrt(1 - c2^2), -sqrt(1 - c2^2)];
+     valid_solutions = [];
+
+    for s2 = s2_possibilidades
+        theta2 = atan2(s2, c2);
+        k1 = L(1) + L(2) * c2;
+        k2 = L(2) * s2;
+        gamma = atan2(k2, k1);
+        theta1 = atan2(y, x) - gamma;
+        theta3 = phi - theta1 - theta2;
+
+        theta = [theta1; theta2; theta3];
+
+        dentro_limites = all(theta >= thetalim(1,:)) & all(theta <= thetalim(2,:));
+        if dentro_limites
+            valid_solutions = [valid_solutions, theta]; 
+        end
+    end
+
+    if isempty(valid_solutions)
+        near = [];
+        far = [];
+        sol = 0;
+    elseif size(valid_solutions,2) == 1
+        near = valid_solutions(:,1);
+        far = [];
+        sol = 1;
+    else
+        d1 = norm(valid_solutions(:,1) - current);
+        d2 = norm(valid_solutions(:,2) - current);
+        if d1 <= d2
+            near = valid_solutions(:,1);
+            far = valid_solutions(:,2);
+        else
+            near = valid_solutions(:,2);
+            far = valid_solutions(:,1);
+        end
+        sol = 1;
+    end
+end
+
+
+##### SOURCE END #####
+--></body></html>

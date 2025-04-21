@@ -1,17 +1,12 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      -->
-<title>Ex4:</title>
-<meta name="generator" content="MATLAB 24.2">
-<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2025-04-20">
-<meta name="DC.source" content="ex4.m">
-<style type="text/css">
+      --><title>Ex4:</title><meta name="generator" content="MATLAB 9.13"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2025-04-21"><meta name="DC.source" content="ex4.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -72,65 +67,21 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style>
-</head>
-<body>
-<div class="content">
-<h1>Ex4:</h1>
-<!--introduction-->
-<p>Realiza a multiplica&ccedil;&atilde;o de matrizes de transforma&ccedil;&atilde;o homog&ecirc;nea de: A em rela&ccedil;&atilde;o a U; A em rela&ccedil;&atilde;o a B; U em rela&ccedil;&atilde;o a C. Para encontrar a matriz de transforma&ccedil;&atilde;o homog&ecirc;nea de C em rela&ccedil;&atilde;o a B.</p>
-<!--/introduction-->
-<h2>Contents</h2>
-<div>
-<ul>
-<li>
-<a href="#1">I/O Variables</a>
-</li>
-<li>
-<a href="#2">Example</a>
-</li>
-<li>
-<a href="#3">Version Control</a>
-</li>
-<li>
-<a href="#4">Code</a>
-</li>
-</ul>
-</div>
-<h2 id="1">I/O Variables</h2>
-<p>
-<tt>IN Double Matrix</tt> <b>arelu</b>, <b>arelb</b>, <b>urelc</b>: Transformation Matrix 4x4</p>
-<p>
-<tt>OU Double Matrix</tt> <b>crelb</b>: Transformation Matrix 4x4</p>
-<h2 id="2">Example</h2>
-<pre>arelu = [11 -1 30];
+  </style></head><body><div class="content"><h1>Ex4:</h1><!--introduction--><p>Realiza a multiplica&ccedil;&atilde;o de matrizes de transforma&ccedil;&atilde;o homog&ecirc;nea de: A em rela&ccedil;&atilde;o a U; A em rela&ccedil;&atilde;o a B; U em rela&ccedil;&atilde;o a C. Para encontrar a matriz de transforma&ccedil;&atilde;o homog&ecirc;nea de C em rela&ccedil;&atilde;o a B.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">I/O Variables</a></li><li><a href="#2">Example</a></li><li><a href="#3">Version Control</a></li><li><a href="#4">Code</a></li></ul></div><h2 id="1">I/O Variables</h2><p><tt>IN Double Matrix</tt> <b>arelu</b>, <b>arelb</b>, <b>urelc</b>: Transformation Matrix 4x4</p><p><tt>OU Double Matrix</tt> <b>crelb</b>: Transformation Matrix 4x4</p><h2 id="2">Example</h2><pre>arelu = [11 -1 30];
 arelb = [0 7 45];
-urelc = [-3 -3 -30];</pre>
-<pre>urela = tinvert(arelu);
-crelu = tinvert(urelc);</pre>
-<pre class="codeinput">
-<span class="comment">%  crela = tmult(urela,crelu);</span>
+urelc = [-3 -3 -30];</pre><pre>urela = tinvert(utoi(arelu));
+crelu = tinvert(utoi(urelc));</pre><pre class="codeinput"><span class="comment">%  crela = tmult(urela,crelu);</span>
 
-<span class="comment">%  crelb = tmult(arelb*crela);</span>
+<span class="comment">%  crelb = tmult(utoi(arelb),crela);</span>
+
 <span class="comment">%</span>
-</pre>
-<h2 id="3">Version Control</h2>
-<p>1.0; Grupo 3; 2025/04/19 ; First issue.</p>
-<h2 id="4">Code</h2>
-<pre class="codeinput">urela = tinvert(arelu);
-crelu = tinvert(urelc);
+</pre><h2 id="3">Version Control</h2><p>1.0; Grupo 3; 2025/04/19 ; First issue.</p><h2 id="4">Code</h2><pre class="codeinput">urela = tinvert(utoi(arelu));
+crelu = tinvert(utoi(urelc));
 
 crela = tmult(urela,crelu);
 
-crelb = tmult(arelb*crela);
-</pre>
-<p class="footer">
-<br>
-<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
-<br>
-</p>
-</div>
-<!--
+crelb = tmult(utoi(arelb),crela);
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Ex4:
 % Realiza a multiplicação de matrizes de transformação homogênea de:
@@ -149,12 +100,13 @@ crelb = tmult(arelb*crela);
 %  arelb = [0 7 45];
 %  urelc = [-3 -3 -30];
 %  
-%  urela = tinvert(arelu);
-%  crelu = tinvert(urelc);
+%  urela = tinvert(utoi(arelu));
+%  crelu = tinvert(utoi(urelc));
 
 %  crela = tmult(urela,crelu);
 
-%  crelb = tmult(arelb*crela);
+%  crelb = tmult(utoi(arelb),crela);
+
 %
 %% Version Control
 %
@@ -162,14 +114,12 @@ crelb = tmult(arelb*crela);
 %  
 %% Code
 
-urela = tinvert(arelu);
-crelu = tinvert(urelc);
+urela = tinvert(utoi(arelu));
+crelu = tinvert(utoi(urelc));
 
 crela = tmult(urela,crelu);
 
-crelb = tmult(arelb*crela);
+crelb = tmult(utoi(arelb),crela);
 
 ##### SOURCE END #####
--->
-</body>
-</html>
+--></body></html>
