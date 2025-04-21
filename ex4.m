@@ -15,12 +15,13 @@
 %  arelb = [0 7 45];
 %  urelc = [-3 -3 -30];
 %  
-%  urela = tinvert(arelu);
-%  crelu = tinvert(urelc);
+%  urela = tinvert(utoi(arelu));
+%  crelu = tinvert(utoi(urelc));
 
 %  crela = tmult(urela,crelu);
 
-%  crelb = tmult(arelb*crela);
+%  crelb = tmult(utoi(arelb),crela);
+
 %
 %% Version Control
 %
@@ -28,9 +29,9 @@
 %  
 %% Code
 
-urela = tinvert(arelu);
-crelu = tinvert(urelc);
+urela = tinvert(utoi(arelu));
+crelu = tinvert(utoi(urelc));
 
 crela = tmult(urela,crelu);
 
-crelb = tmult(arelb*crela);
+crelb = tmult(utoi(arelb),crela);
