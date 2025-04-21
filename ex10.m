@@ -7,8 +7,9 @@
 % [1x2]) e de current (posicao [1x3])
 % |IN Double Matrix| *thetalim*: Matrix de angulos limite [2x3] 
 % |IN Double Array| *trelw*, *srelb*: Transformation Matrix in user form [x y theta]
-% 
-% 
+% |IN Double Matrix| *trelg*: Transformation Matrix 4x4
+% |OU Double Matrix| *srelg*: Transformation Matrix 4x4 
+% |OU Double Matrix| *srelg_check*: Transformation Matrix 4x4
 %
 %% Example
 %
@@ -93,3 +94,4 @@ end
 if size(theta_4, 1) >= 3
     srelg_check4 = where_robot(theta_4, trelg_4, srelb, L)
 end
+
