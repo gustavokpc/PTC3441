@@ -9,7 +9,7 @@ To make changes, update the MATLAB code and republish this document.
 <title>KIN</title>
 <meta name="generator" content="MATLAB 24.2">
 <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-<meta name="DC.date" content="2025-04-19">
+<meta name="DC.date" content="2025-04-20">
 <meta name="DC.source" content="kin.m">
 <style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
@@ -119,7 +119,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 <p>wrelb = kin(theta, L)</p>
 <h2 id="2">I/O Variables</h2>
 <p>
-<tt>IN Double Array</tt> <b>theta</b>, <b>L</b>: Array de valores de theta (em graus; [1x3]) e de L (1x2)</p>
+<tt>IN Double Array</tt> <b>theta</b>, <b>L</b>: Array de valores de theta (em graus; [1x3]) e de L (em metros, [1x2])</p>
 <p>
 <tt>OU Double Matrix</tt> <b>wrelb</b>: : Transformation Matrix 4x4</p>
 <h2 id="3">Example</h2>
@@ -155,11 +155,6 @@ T3 = [cosd(theta(3))    -sind(theta(3))   0     L(2);
 wrelb_t = tmult(T1,T2);
 M = tmult(wrelb_t, T3);
 </pre>
-<pre class="codeoutput error">Not enough input arguments.
-
-Error in kin (line 34)
-T1 = [cosd(theta(1))    -sind(theta(1))   0     0   ;
-           ^^^^^^^^</pre>
 <h2 id="11">Output Data</h2>
 <pre class="codeinput">wrelb = M;
 </pre>
@@ -182,7 +177,7 @@ T1 = [cosd(theta(1))    -sind(theta(1))   0     0   ;
 %
 %% I/O Variables
 % |IN Double Array| *theta*, *L*: Array de valores de theta (em graus;
-% [1x3]) e de L (1x2)
+% [1x3]) e de L (em metros, [1x2])
 % 
 % |OU Double Matrix| *wrelb*: : Transformation Matrix 4x4
 % 

@@ -6,7 +6,7 @@
 %
 %% I/O Variables
 % |IN Double Array| *theta*, *L*: Array de valores de theta (em graus;
-% [1x3]) e de L (1x2)
+% [1x3]) e de L (em metros, [1x2])
 % 
 % |OU Double Matrix| *wrelb*: : Transformation Matrix 4x4
 % 
