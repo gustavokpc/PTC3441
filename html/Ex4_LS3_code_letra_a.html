@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Exercicio 4 a</title>
+<meta name="generator" content="MATLAB 25.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-06-30">
+<meta name="DC.source" content="Ex4_LS3_code_letra_a.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Exercicio 4 a</h1>
+<!--introduction-->
+<p>Simula&ccedil;&atilde;o de um controlador PD com Feedforward para um bra&ccedil;o planar RRR em tempo discreto.</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Calling Syntax</a>
+</li>
+<li>
+<a href="#2">I/O Variables</a>
+</li>
+<li>
+<a href="#3">Example</a>
+</li>
+<li>
+<a href="#4">Hypothesis</a>
+</li>
+<li>
+<a href="#5">Limitations</a>
+</li>
+<li>
+<a href="#6">Version Control</a>
+</li>
+<li>
+<a href="#7">Script</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Calling Syntax</h2>
+<p>Simular o modelo Ex4_LS3.slx no Simulink com os par&acirc;metros definidos no script.</p>
+<h2 id="2">I/O Variables</h2>
+<p>
+<tt>IN Double</tt> r, Beff, Jeff, K, freq, L, m, posicao_inicial, posicao_final <tt>IN Double Array</tt> trelw, srelb <tt>IN Double</tt> T, Ts, F</p>
+<p>N&atilde;o retorna sa&iacute;da direta (outputs), os resultados s&atilde;o gerados via Simulink e gr&aacute;ficos.</p>
+<h2 id="3">Example</h2>
+<pre>Executar o script e simular o arquivo Ex4_LS3.slx:
+&gt;&gt; EX4_LS3_code_letra_a
+O script define os ganhos, par&acirc;metros e trajet&oacute;rias, inicializa o Simulink e plota os esfor&ccedil;os de controle.</pre>
+<h2 id="4">Hypothesis</h2>
+<p>Manipulador planar de tr&ecirc;s juntas (RRR), controlado com lei PD + feedforward em tempo discreto (100 Hz).</p>
+<h2 id="5">Limitations</h2>
+<p>O modelo &eacute; simplificado e utiliza par&acirc;metros aproximados para as in&eacute;rcias e amortecimento, obtidos em aula. N&atilde;o inclui pr&eacute;-compensa&ccedil;&atilde;o de dist&uacute;rbio ou compensa&ccedil;&atilde;o din&acirc;mica completa.</p>
+<h2 id="6">Version Control</h2>
+<p>1.0; Grupo 3; 2025/06/30 ; First issue.</p>
+<h2 id="7">Script</h2>
+<pre class="codeinput">
+<span class="comment">% Par&acirc;metros</span>
+r = 1/100;
+Beff = [50 50 50];
+Jeff = [14 14 14];
+K = 2750;
+N = 3;
+freq = 100; <span class="comment">% Hz</span>
+Ts = 1/freq;
+wn = 2*pi*freq;
+Kp = [(Jeff(1)*wn*wn)/K (Jeff(2)*wn*wn)/K (Jeff(3)*wn*wn)/K];
+Kd = [(2*wn*Jeff(1) - Beff(1))/K (2*wn*Jeff(2) - Beff(2))/K (2*wn*Jeff(3) - Beff(3))/K];
+F = 5;
+T = 3;
+L = [0.5; 0.3];
+m = [4.6; 2.3; 1.0];
+trelw = utoi([0.1 0.2 30.0]);
+srelb = utoi([0.0 0.0 0.0]);
+
+<span class="comment">% Condi&ccedil;&otilde;es iniciais e finais</span>
+posicao_inicial = [60, -110, 20];
+posicao_final = [60, -50, 20];
+
+trels_inicial_internal = where_robot(posicao_inicial, trelw, srelb, L);
+trels_final_internal = where_robot(posicao_final, trelw, srelb, L);
+
+trels_inicial_user = itou(trels_inicial_internal);
+trels_final_user = itou(trels_final_internal);
+
+uform_vec = [trels_inicial_user; trels_inicial_user; trels_final_user];
+thpath = trajectorygenerationrrr(uform_vec, T, Ts);
+thdot = [diff(thpath)/Ts; zeros(1,3)];
+thddot = [diff(thdot)/Ts; zeros(1,3)];
+
+shape = [3 3 3];
+n = shape(3);
+step_t = T*freq;
+t = linspace(0,(n-1)*T,(n-1)*step_t+1);
+
+Thetadotdot = timeseries(thddot, t);
+Thetadot = timeseries(thdot, t);
+Thetad = timeseries(thpath, t);
+
+<span class="comment">% Simula&ccedil;&atilde;o</span>
+resp = sim(<span class="string">'Ex4_LS3.slx'</span>);
+
+<span class="comment">% Esfor&ccedil;o</span>
+t_esforco = resp.Esforco.time;
+y1 = resp.Esforco.signals(1).values;
+y2 = resp.Esforco.signals(2).values;
+y3 = resp.Esforco.signals(3).values;
+
+figure;
+plot(t_esforco, y1, <span class="string">'LineWidth'</span>, 1.5);
+hold <span class="string">on</span>;
+plot(t_esforco, y2, <span class="string">'LineWidth'</span>, 1.5);
+plot(t_esforco, y3, <span class="string">'LineWidth'</span>, 1.5);
+hold <span class="string">off</span>;
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Esfor&ccedil;o (Nm)'</span>);
+legend(<span class="string">'Junta 1'</span>, <span class="string">'Junta 2'</span>, <span class="string">'Junta 3'</span>);
+title(<span class="string">'Esfor&ccedil;os de Controle nas Juntas'</span>);
+grid <span class="string">on</span>;
+
+<span class="comment">% Posi&ccedil;&atilde;o</span>
+t_Posicao = resp.Posicao.time;
+y4 = resp.Posicao.signals(1).values;
+y5 = resp.Posicao.signals(2).values;
+y6 = resp.Posicao.signals(3).values;
+
+figure;
+plot(t_Posicao, y4, <span class="string">'LineWidth'</span>, 1.5);
+hold <span class="string">on</span>;
+plot(t_Posicao, y5, <span class="string">'LineWidth'</span>, 1.5);
+plot(t_Posicao, y6, <span class="string">'LineWidth'</span>, 1.5);
+hold <span class="string">off</span>;
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'Posi&ccedil;&atilde;o (graus)'</span>);
+legend(<span class="string">'Junta 1'</span>, <span class="string">'Junta 2'</span>, <span class="string">'Junta 3'</span>);
+title(<span class="string">'Posi&ccedil;&otilde;es das Juntas'</span>);
+grid <span class="string">on</span>;
+</pre>
+<img vspace="5" hspace="5" src="Ex4_LS3_code_letra_a_01.png" alt=""> <img vspace="5" hspace="5" src="Ex4_LS3_code_letra_a_02.png" alt=""> <p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2025a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Exercicio 4 a
+% Simulação de um controlador PD com Feedforward para um braço planar RRR em tempo discreto.
+%
+%% Calling Syntax
+% Simular o modelo Ex4_LS3.slx no Simulink com os parâmetros definidos no script.
+%
+%% I/O Variables
+% |IN Double| r, Beff, Jeff, K, freq, L, m, posicao_inicial, posicao_final
+% |IN Double Array| trelw, srelb
+% |IN Double| T, Ts, F
+% 
+% Não retorna saída direta (outputs), os resultados são gerados via Simulink e gráficos.
+%
+%% Example
+%  Executar o script e simular o arquivo Ex4_LS3.slx:
+%  >> EX4_LS3_code_letra_a
+%  O script define os ganhos, parâmetros e trajetórias, inicializa o Simulink e plota os esforços de controle.
+%
+%% Hypothesis
+% Manipulador planar de três juntas (RRR), controlado com lei PD + feedforward em tempo discreto (100 Hz).
+%
+%% Limitations
+% O modelo é simplificado e utiliza parâmetros aproximados para as inércias e amortecimento, obtidos em aula.
+% Não inclui pré-compensação de distúrbio ou compensação dinâmica completa.
+%
+%% Version Control
+%
+% 1.0; Grupo 3; 2025/06/30 ; First issue.
+%     
+%% Script
+
+% Parâmetros
+r = 1/100;
+Beff = [50 50 50]; 
+Jeff = [14 14 14]; 
+K = 2750; 
+N = 3;
+freq = 100; % Hz
+Ts = 1/freq;
+wn = 2*pi*freq; 
+Kp = [(Jeff(1)*wn*wn)/K (Jeff(2)*wn*wn)/K (Jeff(3)*wn*wn)/K];
+Kd = [(2*wn*Jeff(1) - Beff(1))/K (2*wn*Jeff(2) - Beff(2))/K (2*wn*Jeff(3) - Beff(3))/K];
+F = 5;
+T = 3;
+L = [0.5; 0.3];
+m = [4.6; 2.3; 1.0];
+trelw = utoi([0.1 0.2 30.0]);
+srelb = utoi([0.0 0.0 0.0]);
+
+% Condições iniciais e finais
+posicao_inicial = [60, -110, 20];
+posicao_final = [60, -50, 20];
+
+trels_inicial_internal = where_robot(posicao_inicial, trelw, srelb, L);
+trels_final_internal = where_robot(posicao_final, trelw, srelb, L);
+
+trels_inicial_user = itou(trels_inicial_internal);
+trels_final_user = itou(trels_final_internal);
+
+uform_vec = [trels_inicial_user; trels_inicial_user; trels_final_user];
+thpath = trajectorygenerationrrr(uform_vec, T, Ts);
+thdot = [diff(thpath)/Ts; zeros(1,3)];
+thddot = [diff(thdot)/Ts; zeros(1,3)];
+
+shape = [3 3 3];
+n = shape(3); 
+step_t = T*freq;
+t = linspace(0,(n-1)*T,(n-1)*step_t+1);
+
+Thetadotdot = timeseries(thddot, t);
+Thetadot = timeseries(thdot, t);
+Thetad = timeseries(thpath, t);
+
+% Simulação
+resp = sim('Ex4_LS3.slx');
+
+% Esforço
+t_esforco = resp.Esforco.time;
+y1 = resp.Esforco.signals(1).values;
+y2 = resp.Esforco.signals(2).values;
+y3 = resp.Esforco.signals(3).values;
+
+figure;
+plot(t_esforco, y1, 'LineWidth', 1.5);
+hold on;
+plot(t_esforco, y2, 'LineWidth', 1.5);
+plot(t_esforco, y3, 'LineWidth', 1.5);
+hold off;
+xlabel('Tempo (s)');
+ylabel('Esforço (Nm)');
+legend('Junta 1', 'Junta 2', 'Junta 3');
+title('Esforços de Controle nas Juntas');
+grid on;
+
+% Posição
+t_Posicao = resp.Posicao.time;
+y4 = resp.Posicao.signals(1).values;
+y5 = resp.Posicao.signals(2).values;
+y6 = resp.Posicao.signals(3).values;
+
+figure;
+plot(t_Posicao, y4, 'LineWidth', 1.5);
+hold on;
+plot(t_Posicao, y5, 'LineWidth', 1.5);
+plot(t_Posicao, y6, 'LineWidth', 1.5);
+hold off;
+xlabel('Tempo (s)');
+ylabel('Posição (graus)');
+legend('Junta 1', 'Junta 2', 'Junta 3');
+title('Posições das Juntas');
+grid on;
+
+##### SOURCE END #####
+-->
+</body>
+</html>

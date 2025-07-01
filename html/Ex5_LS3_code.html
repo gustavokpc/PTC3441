@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Exercicio 5</title>
+<meta name="generator" content="MATLAB 25.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-06-30">
+<meta name="DC.source" content="Ex5_LS3_code.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Exercicio 5</h1>
+<!--introduction-->
+<p>Integra&ccedil;&atilde;o do controle PD com Feedforward ao controle de velocidade (Resolved-Rate Control).</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Calling Syntax</a>
+</li>
+<li>
+<a href="#2">I/O Variables</a>
+</li>
+<li>
+<a href="#3">Example</a>
+</li>
+<li>
+<a href="#4">Hypothesis</a>
+</li>
+<li>
+<a href="#5">Limitations</a>
+</li>
+<li>
+<a href="#6">Version Control</a>
+</li>
+<li>
+<a href="#7">Script</a>
+</li>
+<li>
+<a href="#8">Plots</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Calling Syntax</h2>
+<p>Executar o script diretamente: &gt;&gt; Ex5_LS3_code</p>
+<h2 id="2">I/O Variables</h2>
+<p>Nenhuma entrada ou sa&iacute;da direta.</p>
+<h2 id="3">Example</h2>
+<p>&gt;&gt; Ex5_LS3_code</p>
+<h2 id="4">Hypothesis</h2>
+<p>Manipulador planar RRR com controle PD + feedforward em malha fechada de velocidade.</p>
+<h2 id="5">Limitations</h2>
+<h2 id="6">Version Control</h2>
+<p>1.0; Grupo 3; 2025/06/30 ; First issue.</p>
+<h2 id="7">Script</h2>
+<pre class="codeinput">r = 1/100;
+Beff = [50 50 50];
+Jeff = [14 14 14];
+K = 2750;
+N = 3;
+freq = 100; <span class="comment">% Hz</span>
+Ts = 1/freq;
+wn = 2*pi*freq;
+Kp = [(Jeff(1)*wn*wn)/K (Jeff(2)*wn*wn)/K (Jeff(3)*wn*wn)/K];
+Kd = [(2*wn*Jeff(1) - Beff(1))/K (2*wn*Jeff(2) - Beff(2))/K (2*wn*Jeff(3) - Beff(3))/K];
+F = 5;
+T = 3;
+L = [0.5; 0.3];
+m = [4.6; 2.3; 1.0];
+
+sim([<span class="string">'Ex5_LS3.slx'</span>]);
+</pre>
+<h2 id="8">Plots</h2>
+<pre class="codeinput">figure;
+subplot(2,2,1);
+plot(Jac_det.time, Jac_det.data, <span class="string">'LineWidth'</span>, 1.2);
+title(<span class="string">'Determinante Jacobiano'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'|J|'</span>);
+grid <span class="string">on</span>;
+
+subplot(2,2,2);
+plot(ThetadotA.time, ThetadotA.data, <span class="string">'LineWidth'</span>, 1.2);
+title(<span class="string">'Velocidade Articular'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'\thetȧ (rad/s)'</span>);
+legend(<span class="string">'\thetȧ_1'</span>, <span class="string">'\thetȧ_2'</span>, <span class="string">'\thetȧ_3'</span>);
+grid <span class="string">on</span>;
+
+subplot(2,2,3);
+plot(ThetaA.time, ThetaA.data, <span class="string">'LineWidth'</span>, 1.2);
+title(<span class="string">'Posi&ccedil;&atilde;o Articular'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'\theta (rad)'</span>);
+legend(<span class="string">'\theta_1'</span>, <span class="string">'\theta_2'</span>, <span class="string">'\theta_3'</span>);
+grid <span class="string">on</span>;
+
+subplot(2,2,4);
+plot(Tau.time, Tau.data, <span class="string">'LineWidth'</span>, 1.2);
+title(<span class="string">'Torque de Controle'</span>);
+xlabel(<span class="string">'Tempo (s)'</span>);
+ylabel(<span class="string">'\tau (Nm)'</span>);
+legend(<span class="string">'\tau_1'</span>, <span class="string">'\tau_2'</span>, <span class="string">'\tau_3'</span>);
+grid <span class="string">on</span>;
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2025a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Exercicio 5 
+% Integração do controle PD com Feedforward ao controle de velocidade (Resolved-Rate Control).
+%
+%% Calling Syntax
+% Executar o script diretamente:
+% >> Ex5_LS3_code
+%
+%% I/O Variables
+% Nenhuma entrada ou saída direta.
+%
+%% Example
+% >> Ex5_LS3_code
+%
+%% Hypothesis
+% Manipulador planar RRR com controle PD + feedforward em malha fechada de velocidade.
+%
+%% Limitations
+% 
+%
+%% Version Control
+%
+% 1.0; Grupo 3; 2025/06/30 ; First issue.
+%
+%% Script
+
+
+r = 1/100;
+Beff = [50 50 50]; 
+Jeff = [14 14 14]; 
+K = 2750; 
+N = 3;
+freq = 100; % Hz
+Ts = 1/freq;
+wn = 2*pi*freq; 
+Kp = [(Jeff(1)*wn*wn)/K (Jeff(2)*wn*wn)/K (Jeff(3)*wn*wn)/K];
+Kd = [(2*wn*Jeff(1) - Beff(1))/K (2*wn*Jeff(2) - Beff(2))/K (2*wn*Jeff(3) - Beff(3))/K];
+F = 5;
+T = 3;
+L = [0.5; 0.3];
+m = [4.6; 2.3; 1.0];
+
+sim(['Ex5_LS3.slx']);
+
+%% Plots
+
+figure;
+subplot(2,2,1);
+plot(Jac_det.time, Jac_det.data, 'LineWidth', 1.2);
+title('Determinante Jacobiano');
+xlabel('Tempo (s)');
+ylabel('|J|');
+grid on;
+
+subplot(2,2,2);
+plot(ThetadotA.time, ThetadotA.data, 'LineWidth', 1.2);
+title('Velocidade Articular');
+xlabel('Tempo (s)');
+ylabel('\thetȧ (rad/s)');
+legend('\thetȧ_1', '\thetȧ_2', '\thetȧ_3');
+grid on;
+
+subplot(2,2,3);
+plot(ThetaA.time, ThetaA.data, 'LineWidth', 1.2);
+title('Posição Articular');
+xlabel('Tempo (s)');
+ylabel('\theta (rad)');
+legend('\theta_1', '\theta_2', '\theta_3');
+grid on;
+
+subplot(2,2,4);
+plot(Tau.time, Tau.data, 'LineWidth', 1.2);
+title('Torque de Controle');
+xlabel('Tempo (s)');
+ylabel('\tau (Nm)');
+legend('\tau_1', '\tau_2', '\tau_3');
+grid on;
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>

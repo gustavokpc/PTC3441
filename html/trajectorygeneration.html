@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>TRAJECTORYGENERATION</title>
+<meta name="generator" content="MATLAB 25.1">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-06-30">
+<meta name="DC.source" content="trajectorygeneration.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>TRAJECTORYGENERATION</h1>
+<!--introduction-->
+<p>Gera uma trajet&oacute;ria multissegmentada de posi&ccedil;&atilde;o, velocidade e acelera&ccedil;&atilde;o para uma junta, com base nos coeficientes c&uacute;bicos de interpola&ccedil;&atilde;o.</p>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Calling Syntax</a>
+</li>
+<li>
+<a href="#2">I/O Variables</a>
+</li>
+<li>
+<a href="#3">Example</a>
+</li>
+<li>
+<a href="#4">Hypothesis</a>
+</li>
+<li>
+<a href="#5">Limitations</a>
+</li>
+<li>
+<a href="#6">Version Control</a>
+</li>
+<li>
+<a href="#7">Function</a>
+</li>
+<li>
+<a href="#9">Validity</a>
+</li>
+<li>
+<a href="#10">Main Calculations</a>
+</li>
+<li>
+<a href="#11">Output Data</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Calling Syntax</h2>
+<p>thpath = trajectorygeneration(traj_points, T, Ts)</p>
+<h2 id="2">I/O Variables</h2>
+<p>
+<tt>IN Double Array</tt> <b>traj_points</b>: Vetor com os pontos desejados de trajet&oacute;ria [1xn] <tt>IN Double</tt> <b>T</b>: Tempo de dura&ccedil;&atilde;o de cada segmento [segundos] <tt>IN Double</tt> <b>Ts</b>: Taxa de amostragem da trajet&oacute;ria [segundos]</p>
+<p>
+<tt>OU Double Matrix</tt> <b>thpath</b>: Matriz com [posi&ccedil;&atilde;o, velocidade, acelera&ccedil;&atilde;o] por linha [mx3]</p>
+<h2 id="3">Example</h2>
+<pre>traj_points = [30 45 90 60];
+T = 2;
+Ts = 0.025;
+thpath = trajectorygeneration(traj_points, T, Ts)</pre>
+<h2 id="4">Hypothesis</h2>
+<p>Cada segmento &eacute; representado por um polin&ocirc;mio c&uacute;bico com dura&ccedil;&atilde;o fixa.</p>
+<h2 id="5">Limitations</h2>
+<p>Apenas uma junta tratada por vez; n&atilde;o inclui sincroniza&ccedil;&atilde;o entre m&uacute;ltiplas juntas.</p>
+<h2 id="6">Version Control</h2>
+<p>1.0; Grupo 3; 2025/06/30 ; First issue.</p>
+<h2 id="7">Function</h2>
+<pre class="codeinput">
+<span class="keyword">function</span> [thpath] = trajectorygeneration(traj_points, T, Ts)
+</pre>
+<h2 id="9">Validity</h2>
+<h2 id="10">Main Calculations</h2>
+<pre class="codeinput">cctot = trajectoryplanning(traj_points, T);
+n_seg = length(traj_points) - 1;
+N = round(T / Ts);
+thpath = [];
+
+<span class="keyword">for</span> k = 1:n_seg
+    coeffs = cctot(:, k);
+    a0 = coeffs(1); a1 = coeffs(2);
+    a2 = coeffs(3); a3 = coeffs(4);
+
+    t_vec = 0:Ts:T-Ts;
+
+    theta = a0 + a1*t_vec + a2*t_vec.^2 + a3*t_vec.^3;
+    dtheta = a1 + 2*a2*t_vec + 3*a3*t_vec.^2;
+    ddtheta = 2*a2 + 6*a3*t_vec;
+
+    thpath = [thpath; [theta' dtheta' ddtheta']];
+<span class="keyword">end</span>
+
+final_theta = traj_points(end);
+thpath = [thpath; [final_theta 0 0]];
+</pre>
+<pre class="codeoutput error">Not enough input arguments.
+
+Error in trajectorygeneration (line 38)
+cctot = trajectoryplanning(traj_points, T);
+                           ^^^^^^^^^^^</pre>
+<h2 id="11">Output Data</h2>
+<p>Matriz com linhas contendo posi&ccedil;&atilde;o, velocidade e acelera&ccedil;&atilde;o para cada Ts</p>
+<pre class="codeinput">
+<span class="keyword">end</span>
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2025a</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% TRAJECTORYGENERATION
+% Gera uma trajetória multissegmentada de posição, velocidade e aceleração
+% para uma junta, com base nos coeficientes cúbicos de interpolação.
+%
+%% Calling Syntax
+% thpath = trajectorygeneration(traj_points, T, Ts)
+%
+%% I/O Variables
+% |IN Double Array| *traj_points*: Vetor com os pontos desejados de trajetória [1xn]
+% |IN Double| *T*: Tempo de duração de cada segmento [segundos]
+% |IN Double| *Ts*: Taxa de amostragem da trajetória [segundos]
+%
+% |OU Double Matrix| *thpath*: Matriz com [posição, velocidade, aceleração] por linha [mx3]
+%
+%% Example
+%  traj_points = [30 45 90 60];
+%  T = 2;
+%  Ts = 0.025;
+%  thpath = trajectorygeneration(traj_points, T, Ts)
+%
+%% Hypothesis
+% Cada segmento é representado por um polinômio cúbico com duração fixa.
+%
+%% Limitations
+% Apenas uma junta tratada por vez; não inclui sincronização entre múltiplas juntas.
+%
+%% Version Control
+%
+% 1.0; Grupo 3; 2025/06/30 ; First issue.
+%
+%% Function
+function [thpath] = trajectorygeneration(traj_points, T, Ts)
+
+%% Validity
+
+
+%% Main Calculations
+cctot = trajectoryplanning(traj_points, T);
+n_seg = length(traj_points) - 1;              
+N = round(T / Ts);                            
+thpath = [];                                  
+
+for k = 1:n_seg
+    coeffs = cctot(:, k);                   
+    a0 = coeffs(1); a1 = coeffs(2);
+    a2 = coeffs(3); a3 = coeffs(4);
+
+    t_vec = 0:Ts:T-Ts;                        
+
+    theta = a0 + a1*t_vec + a2*t_vec.^2 + a3*t_vec.^3;
+    dtheta = a1 + 2*a2*t_vec + 3*a3*t_vec.^2;
+    ddtheta = 2*a2 + 6*a3*t_vec;
+
+    thpath = [thpath; [theta' dtheta' ddtheta']];
+end
+
+final_theta = traj_points(end);
+thpath = [thpath; [final_theta 0 0]];
+
+%% Output Data
+% Matriz com linhas contendo posição, velocidade e aceleração para cada Ts
+end
+##### SOURCE END #####
+-->
+</body>
+</html>
