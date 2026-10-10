@@ -1,0 +1,14 @@
+# MATLAB editor/autosave files
+*.asv
+*.m~
+*.autosave
+
+# Simulink generated caches and compiled models
+slprj/
+*.slxc
+*.slxc*
+
+# Operating-system and MATLAB local settings
+.DS_Store
+Thumbs.db
+*.mlx~

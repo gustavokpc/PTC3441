@@ -1,7 +1,0 @@
-urela = tinvert(arelu)
-crelu = tinvert(urelc)
-
-crela
-
-
-crelb = tmult(arelb*crela)
